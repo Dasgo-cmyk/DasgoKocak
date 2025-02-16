@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Dasgo</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            transition: background 0.3s;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(51, 51, 51, 0.8);
+            color: white;
+            padding: 15px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            z-index: 1000;
+        }
+        .navbar h2 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+        .navbar.scrolled {
+            background: #333;
+        }
+        header {
+            padding: 100px 20px 50px;
+            background: linear-gradient(to right, #3498db, #8e44ad);
+            color: white;
+            margin-top: 50px;
+        }
+        .video-background {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+        .video-background video {
+            width: 100%;
+            height: auto;
+        }
+        .about, .services, .contact {
+            padding: 50px;
+            background: #f4f4f4;
+            margin: 20px 0;
+            transform: translateY(50px);
+            opacity: 0;
+            transition: all 1s ease-in-out;
+        }
+        .about.show, .services.show, .contact.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .dark-mode {
+            background: #222;
+            color: white;
+        }
+        .footer {
+            padding: 20px;
+            background: #333;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <h2>Website Dasgo</h2>
+        <button id="modeToggle">🌙</button>
+    </nav>
+    <header>
+        <h1 class="fade-in">Selamat Datang di Website Dasgo</h1>
+        <p class="fade-in">Nikmati pengalaman browsing dengan website yang belum terlalu sempurna ini</p>
+    </header>
+    <section class="video-background">
+        <video autoplay muted loop>
+            <source src="background.mp4" type="video/mp4">
+        </video>
+        <h2>Scroll ke bawah untuk efek keren</h2>
+    </section>
+    <section class="about">
+        <h2>Tentang Dasgo</h2>
+        <p>gua adalah anak 15 tahun yang tertarik dengan coding walaupun belum jago.</p>
+    </section>
+    <section class="services">
+        <h2>Layanan Dasgo</h2>
+        <ul>
+            <li>Desain Web Profesional</li>
+            <li>Pengembangan Aplikasi (masih di pelajari)</li>
+            <li>membuat File/cheat di game Free Fire</li>
+        </ul>
+    </section>
+    <section class="contact">
+        <h2>Hubungi Dasgo</h2>
+        <p>Email: anjazzvidkece@gmail.com</p>
+        <p>Telepon: +62 813 7988 8686</p>
+    </section>
+    <footer class="footer">
+        <p>Website ini masih dalam tahap percobaan, belum terlalu sempurna karena gua bukan sepuh coding.</p>
+        <p>Terima kasih!</p>
+    </footer>
+    <script>
+        document.addEventListener("scroll", function() {
+            const navbar = document.querySelector(".navbar");
+            if (window.scrollY > 50) {
+                navbar.classList.add("scrolled");
+            } else {
+                navbar.classList.remove("scrolled");
+            }
+        
+            const sections = document.querySelectorAll(".about, .services, .contact");
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                if (sectionTop < window.innerHeight - 100) {
+                    section.classList.add("show");
+                }
+            });
+        });
+        
+        // Dark/Light Mode
+        const modeToggle = document.getElementById("modeToggle");
+        modeToggle.addEventListener("click", function() {
+            document.body.classList.toggle("dark-mode");
+            modeToggle.textContent = document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
+        });
+        
+        // GSAP Animations
+        gsap.from("header h1", { opacity: 0, y: -50, duration: 1 });
+        gsap.from("header p", { opacity: 0, y: 50, duration: 1, delay: 0.5 });
+    </script>
+</body>
+</html>
